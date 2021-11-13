@@ -15,8 +15,11 @@ public class GameTest {
 
     @Test
     public void startsWithPopulatedDeck() {
-        assertEquals(52,game.getDeckCount());
+        assertEquals(52, game.getDeckCount());
     }
 
-
+    @Test
+    public void startsWithDealer() {
+        assertEquals("DEALER", game.getDealer().getName());
+    }
 }

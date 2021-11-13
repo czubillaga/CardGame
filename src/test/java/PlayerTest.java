@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class PlayerTest {
 
@@ -19,5 +20,10 @@ public class PlayerTest {
     public void canAddCardToHandWhenDealtCard() {
         player.addToHand(deck.deal());
         assertEquals(1, player.getHand().getCardCount());
+    }
+
+    @Test
+    public void canGetName() {
+        assertEquals("Carlos", player.getName());
     }
 }
