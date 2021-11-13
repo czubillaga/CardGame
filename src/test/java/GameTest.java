@@ -7,12 +7,14 @@ import static org.junit.Assert.assertNotEquals;
 public class GameTest {
 
     Game game;
-    Player player;
+    Player player1;
+    Player player2;
 
     @Before
     public void before() {
         game = new Game();
-        player = new Player("Carlos");
+        player1 = new Player("Carlos");
+        player2 = new Player("Oscar");
     }
 
     @Test
@@ -27,7 +29,18 @@ public class GameTest {
 
     @Test
     public void canAddPlayers() {
-        game.addPlayer(player);
+        game.addPlayer(player1);
         assertEquals(1, game.playerCount());
+    }
+
+    @Test
+    public void canReturnWinnerForSingleCardGame() {
+        game.addPlayer(player1);
+        game.addPlayer(player2);
+        Dealer dealer = game.getDealer();
+        player1.addToHand(dealer.deal());
+        player2.addToHand(dealer.deal());
+        game.play();
+        assertEquals("Oscar", game.getWinner().getName());
     }
 }

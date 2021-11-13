@@ -21,10 +21,20 @@ public class Runner {
         player3.addToHand(dealer.deal());
         player4.addToHand(dealer.deal());
 
-        System.out.println("Player 1 was dealt the " + player1.getHand().deal().stringify());
-        System.out.println("Player 2 was dealt the " + player2.getHand().deal().stringify());
-        System.out.println("Player 3 was dealt the " + player3.getHand().deal().stringify());
-        System.out.println("Player 4 was dealt the " + player4.getHand().deal().stringify());
+        Card card1 = (Card) player1.getHand().getCards().get(0);
+        Card card2 = (Card) player2.getHand().getCards().get(0);
+        Card card3 = (Card) player3.getHand().getCards().get(0);
+        Card card4 = (Card) player4.getHand().getCards().get(0);
+
+        System.out.println("Player 1 was dealt the " + card1.stringify());
+        System.out.println("Player 2 was dealt the " + card2.stringify());
+        System.out.println("Player 3 was dealt the " + card3.stringify());
+        System.out.println("Player 4 was dealt the " + card4.stringify());
+
+        game.play();
+
+        System.out.println("");
+        System.out.println(game.getWinner().getName() + " WINS!");
 
     }
 }

@@ -5,6 +5,7 @@ public class Game {
     private Deck deck;
     private Dealer dealer;
     private ArrayList<Player> players;
+    private Player winner;
 
     public Game() {
         this.deck = new Deck();
@@ -29,5 +30,33 @@ public class Game {
         return this.players.size();
     }
 
+    public void play() {
 
+        Player winnerSoFar = this.players.get(0);
+        Card winningCardSoFar = (Card) winnerSoFar.getHand().getCards().get(0);
+
+        for(int index = 1; index < this.players.size(); index++) {
+            Player currentPlayer = this.players.get(index);
+            Card currentCard = (Card) currentPlayer.getHand().getCards().get(0);
+            if(currentCard.getRankValue() > winningCardSoFar.getRankValue()) {
+                winnerSoFar = currentPlayer;
+                winningCardSoFar = currentCard;
+            } else if(currentCard.getRankValue() == winningCardSoFar.getRankValue()){
+                if(currentCard.getSuitValue() > winningCardSoFar.getSuitValue()) {
+                    winnerSoFar = currentPlayer;
+                    winningCardSoFar = currentCard;
+                }
+            }
+        }
+
+        this.setWinner(winnerSoFar);
+    }
+
+    public void setWinner(Player player) {
+        this.winner = player;
+    }
+
+    public Player getWinner() {
+        return this.winner;
+    }
 }
