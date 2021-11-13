@@ -59,4 +59,35 @@ public class Game {
     public Player getWinner() {
         return this.winner;
     }
+
+    public ArrayList getPlayers() {
+        return this.players;
+    }
+
+    public void playBlackJack() {
+        Player player = (Player) this.getPlayers().get(0);
+        Dealer dealer = this.getDealer();
+
+        Integer playerHandValue = player.getHand().getRankTotal();
+        Integer dealerHandValue = dealer.getHand().getRankTotal();
+
+        int playerProximity = 21 - playerHandValue;
+        int dealerProximity = 21 - dealerHandValue;
+
+        if(playerHandValue > 21 && dealerHandValue <= 21) {
+            this.setWinner(dealer);
+        } else if(playerHandValue <= 21 && dealerHandValue > 21) {
+            this.setWinner(player);
+        } else if(playerHandValue == 21 && dealerHandValue != 21) {
+            this.setWinner(player);
+        } else if(playerHandValue != 21 && dealerHandValue == 21) {
+            this.setWinner(dealer);
+        } else if(playerHandValue < 21 && dealerHandValue < 21) {
+            if(playerProximity < dealerProximity) {
+                this.setWinner(player);
+            } else {
+                this.setWinner(dealer);
+            }
+        }
+    }
 }

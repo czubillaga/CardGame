@@ -25,7 +25,7 @@ public class CardTest {
 
     @Test
     public void cardsHaveNumericValues() {
-        assertEquals(13, card.getRankValue());
+        assertEquals(10, card.getRankValue());
         assertEquals(4, card.getSuitValue());
     }
 }
