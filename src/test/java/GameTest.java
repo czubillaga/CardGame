@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class GameTest {
 
@@ -13,7 +14,9 @@ public class GameTest {
     }
 
     @Test
-    public void gameStartsWithPopulatedDeck() {
+    public void startsWithPopulatedDeck() {
         assertEquals(52,game.getDeckCount());
     }
+
+
 }
