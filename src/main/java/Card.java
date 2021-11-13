@@ -19,4 +19,12 @@ public class Card {
     public String stringify() {
         return this.rank.toString() + " of " + this.suit.toString();
     }
+
+    public int getSuitValue() {
+        return this.suit.getValue();
+    }
+
+    public int getRankValue() {
+        return this.rank.getValue();
+    }
 }

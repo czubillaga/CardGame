@@ -22,4 +22,10 @@ public class CardTest {
     public void canStringifyCard() {
         assertEquals("KING of SPADES", card.stringify());
     }
+
+    @Test
+    public void cardsHaveNumericValues() {
+        assertEquals(13, card.getRankValue());
+        assertEquals(4, card.getSuitValue());
+    }
 }
