@@ -14,4 +14,5 @@ public class Dealer extends Player{
     public void shuffle() {
         this.deck.shuffle();
     }
+
 }

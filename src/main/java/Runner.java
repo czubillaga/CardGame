@@ -1,31 +1,53 @@
+import java.util.Locale;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Runner {
     public static void main(String[] args) {
 
         Game game = new Game();
-
-//        System.out.println("Let's Play Black Jack! Enter your name: ");
-//        Scanner in = new Scanner(System.in);
-//        String name = in.nextLine();
-
+        Dealer dealer = game.getDealer();
         Player player = new Player("Player");
         game.addPlayer(player);
-
-        Dealer dealer = game.getDealer();
         dealer.shuffle();
 
+        System.out.println("Let's Play BlackJack!");
+        System.out.println();
+        Scanner in = new Scanner(System.in);
+
         player.addToHand(dealer.deal());
         dealer.addToHand(dealer.deal());
         player.addToHand(dealer.deal());
         dealer.addToHand(dealer.deal());
-        if(dealer.getHand().getRankTotal() < 16) {
-            dealer.addToHand(dealer.deal());
+
+        Card holeCard = (Card) dealer.getHand().getCards().get(1);
+        Card faceUpCard = (Card) dealer.getHand().getCards().get(0);
+
+        System.out.println("You were dealt: ");
+        System.out.println(player.getHand().stringify());
+        System.out.println();
+        System.out.println("The dealer was dealt: ");
+        System.out.println(faceUpCard.stringify() + " and a HOLE CARD");
+        System.out.println();
+
+        System.out.println("Would you like to STICK or TWIST?");
+        String choice = in.nextLine().toLowerCase();
+        System.out.println();
+
+        if(Objects.equals(choice, "twist")) {
+            player.addToHand(dealer.deal());
+            System.out.println("You were dealt: ");
+            System.out.println(player.getHand().stringify());
+            System.out.println("Dealer's HOLE CARD was " + holeCard.stringify());
+        } else if (Objects.equals(choice, "stick")) {
+            System.out.println("Dealer's HOLE CARD was " + holeCard.stringify());
+            while(dealer.getHand().getRankTotal() < 16) {
+                System.out.println("Dealer Twists");
+                dealer.addToHand(dealer.deal());
+                System.out.println("Dealer drew " + dealer.getHand().stringify());
+            }
         }
 
-
-        System.out.println("You were dealt: " + player.getHand().stringify());
-        System.out.println("The dealer was dealt: " + dealer.getHand().stringify());
 
         game.playBlackJack();
         System.out.println();

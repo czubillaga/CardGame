@@ -26,4 +26,5 @@ public class DealerTest {
         dealer.shuffle();
         assertNotEquals("ACE of CLUBS",dealer.deal().stringify());
     }
+
 }

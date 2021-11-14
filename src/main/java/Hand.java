@@ -12,7 +12,7 @@ public class Hand extends Deck{
         ArrayList<Card> cards = this.getCards();
 
         for(Card card: cards) {
-            handString += card.stringify() + " ";
+            handString += card.stringify() + "\n";
         }
 
         return handString;
