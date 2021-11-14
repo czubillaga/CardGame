@@ -19,6 +19,9 @@ public class Runner {
         dealer.addToHand(dealer.deal());
         player.addToHand(dealer.deal());
         dealer.addToHand(dealer.deal());
+        if(dealer.getHand().getRankTotal() < 16) {
+            dealer.addToHand(dealer.deal());
+        }
 
 
         System.out.println("You were dealt: " + player.getHand().stringify());
