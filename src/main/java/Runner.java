@@ -22,10 +22,11 @@ public class Runner {
         Card holeCard = (Card) dealer.getHand().getCards().get(1);
         Card faceUpCard = (Card) dealer.getHand().getCards().get(0);
 
-        System.out.println("You were dealt: ");
+        System.out.println();
+        System.out.println("Your hand: ");
         System.out.println(player.getHand().stringify());
         System.out.println();
-        System.out.println("The dealer was dealt: ");
+        System.out.println("Dealer's hand: ");
         System.out.println(faceUpCard.stringify() + " and a HOLE CARD");
         System.out.println();
 
@@ -36,23 +37,17 @@ public class Runner {
 
         if(Objects.equals(choice, "twist")) {
             player.addToHand(dealer.deal());
-            System.out.println("You were dealt: ");
-            System.out.println(player.getHand().stringify());
-            System.out.println("Dealer's HOLE CARD was " + holeCard.stringify());
+            System.out.println("Dealer's HOLE CARD was the " + holeCard.stringify());
             while(dealer.getHand().getRankTotal() < 16) {
                 System.out.println("Dealer Twists");
                 dealer.addToHand(dealer.deal());
-                Card cardDrawn = (Card) dealer.getHand().getLastCard();
-                System.out.println("Dealer drew " + cardDrawn.stringify());
             }
 
         } else if (Objects.equals(choice, "stick")) {
-            System.out.println("Dealer's HOLE CARD was " + holeCard.stringify());
+            System.out.println("Dealer's HOLE CARD was the " + holeCard.stringify());
             while(dealer.getHand().getRankTotal() < 16) {
                 System.out.println("Dealer Twists");
                 dealer.addToHand(dealer.deal());
-                Card cardDrawn = dealer.getHand().getLastCard();
-                System.out.println("Dealer drew " + cardDrawn.stringify());
             }
         }
 

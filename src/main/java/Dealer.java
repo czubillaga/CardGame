@@ -15,4 +15,14 @@ public class Dealer extends Player{
         this.deck.shuffle();
     }
 
+    @Override
+    public void addToHand(Card card) {
+        this.getHand().addCard(card);
+        if(this.getHand().getCards().size() > 1) {
+            System.out.println(this.getName() + " was dealt a HOLE CARD");
+        } else {
+            System.out.println(this.getName() + " was dealt the " + card.stringify());
+        }
+    }
+
 }

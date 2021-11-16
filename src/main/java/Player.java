@@ -10,6 +10,7 @@ public class Player {
 
     public void addToHand(Card card) {
         this.hand.addCard(card);
+        System.out.println(this.getName() + " was dealt the " + card.stringify());
     }
 
     public Hand getHand() {
