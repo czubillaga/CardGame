@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Player {
 
     private Hand hand;
@@ -11,6 +13,7 @@ public class Player {
     public void addToHand(Card card) {
         this.hand.addCard(card);
         System.out.println(this.getName() + " was dealt the " + card.stringify());
+        System.out.println();
     }
 
     public Hand getHand() {
@@ -19,5 +22,21 @@ public class Player {
 
     public String getName() {
         return this.name;
+    }
+
+    public int getRankTotal() {
+        return this.getHand().getRankTotal();
+    }
+
+    public void printHand() {
+        String handString = this.getName() + "'s hand: \n" ;
+        for(Object card: this.getCards()) {
+            handString += ((Card) card).stringify() + "\n";
+        }
+        System.out.println(handString);
+    }
+
+    public ArrayList getCards() {
+        return this.getHand().getCards();
     }
 }

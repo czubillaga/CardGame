@@ -19,16 +19,8 @@ public class Runner {
         player.addToHand(dealer.deal());
         dealer.addToHand(dealer.deal());
 
-        Card holeCard = (Card) dealer.getHand().getCards().get(1);
-        Card faceUpCard = (Card) dealer.getHand().getCards().get(0);
-
-        System.out.println();
-        System.out.println("Your hand: ");
-        System.out.println(player.getHand().stringify());
-        System.out.println();
-        System.out.println("Dealer's hand: ");
-        System.out.println(faceUpCard.stringify() + " and a HOLE CARD");
-        System.out.println();
+        player.printHand();
+        dealer.printHand();
 
         System.out.println("Would you like to STICK or TWIST?");
         Scanner in = new Scanner(System.in);
@@ -37,15 +29,15 @@ public class Runner {
 
         if(Objects.equals(choice, "twist")) {
             player.addToHand(dealer.deal());
-            System.out.println("Dealer's HOLE CARD was the " + holeCard.stringify());
-            while(dealer.getHand().getRankTotal() < 16) {
+            System.out.println("Dealer's HOLE CARD was the " + dealer.getHoleCard().stringify());
+            while(dealer.getRankTotal() < 16) {
                 System.out.println("Dealer Twists");
                 dealer.addToHand(dealer.deal());
             }
 
         } else if (Objects.equals(choice, "stick")) {
-            System.out.println("Dealer's HOLE CARD was the " + holeCard.stringify());
-            while(dealer.getHand().getRankTotal() < 16) {
+            System.out.println("Dealer's HOLE CARD was the " + dealer.getHoleCard().stringify());
+            while(dealer.getRankTotal() < 16) {
                 System.out.println("Dealer Twists");
                 dealer.addToHand(dealer.deal());
             }

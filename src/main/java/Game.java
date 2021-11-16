@@ -69,8 +69,8 @@ public class Game {
         Player player = (Player) this.getPlayers().get(0);
         Dealer dealer = this.getDealer();
 
-        Integer playerHandValue = player.getHand().getRankTotal();
-        Integer dealerHandValue = dealer.getHand().getRankTotal();
+        Integer playerHandValue = player.getRankTotal();
+        Integer dealerHandValue = dealer.getRankTotal();
 
         int playerProximity = 21 - playerHandValue;
         int dealerProximity = 21 - dealerHandValue;
