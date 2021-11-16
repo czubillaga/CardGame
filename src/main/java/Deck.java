@@ -37,4 +37,8 @@ public class Deck {
     public ArrayList getCards() {
         return this.cards;
     }
+
+    public Card getLastCard() {
+        return this.cards.get(this.getCardCount() -1);
+    }
 }

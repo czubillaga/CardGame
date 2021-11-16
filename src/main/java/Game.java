@@ -6,6 +6,7 @@ public class Game {
     private Dealer dealer;
     private ArrayList<Player> players;
     private Player winner;
+    private Boolean winnerSet = false;
 
     public Game() {
         this.deck = new Deck();

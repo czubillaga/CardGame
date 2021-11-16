@@ -13,7 +13,6 @@ public class Runner {
 
         System.out.println("Let's Play BlackJack!");
         System.out.println();
-        Scanner in = new Scanner(System.in);
 
         player.addToHand(dealer.deal());
         dealer.addToHand(dealer.deal());
@@ -31,6 +30,7 @@ public class Runner {
         System.out.println();
 
         System.out.println("Would you like to STICK or TWIST?");
+        Scanner in = new Scanner(System.in);
         String choice = in.nextLine().toLowerCase();
         System.out.println();
 
@@ -39,12 +39,20 @@ public class Runner {
             System.out.println("You were dealt: ");
             System.out.println(player.getHand().stringify());
             System.out.println("Dealer's HOLE CARD was " + holeCard.stringify());
+            while(dealer.getHand().getRankTotal() < 16) {
+                System.out.println("Dealer Twists");
+                dealer.addToHand(dealer.deal());
+                Card cardDrawn = (Card) dealer.getHand().getLastCard();
+                System.out.println("Dealer drew " + cardDrawn.stringify());
+            }
+
         } else if (Objects.equals(choice, "stick")) {
             System.out.println("Dealer's HOLE CARD was " + holeCard.stringify());
             while(dealer.getHand().getRankTotal() < 16) {
                 System.out.println("Dealer Twists");
                 dealer.addToHand(dealer.deal());
-                System.out.println("Dealer drew " + dealer.getHand().stringify());
+                Card cardDrawn = dealer.getHand().getLastCard();
+                System.out.println("Dealer drew " + cardDrawn.stringify());
             }
         }
 

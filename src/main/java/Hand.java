@@ -42,4 +42,5 @@ public class Hand extends Deck{
         }
         return contA;
     }
+
 }
