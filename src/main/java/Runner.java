@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Runner {
     public static void main(String[] args) {
 
-        Game game = new Game();
+        BlackJack game = new BlackJack();
         Dealer dealer = game.getDealer();
         Player player = new Player("Player");
         game.addPlayer(player);

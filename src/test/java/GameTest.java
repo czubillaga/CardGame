@@ -6,13 +6,13 @@ import static org.junit.Assert.assertNotEquals;
 
 public class GameTest {
 
-    Game game;
+    BlackJack game;
     Player player1;
     Player player2;
 
     @Before
     public void before() {
-        game = new Game();
+        game = new BlackJack();
         player1 = new Player("Carlos");
         player2 = new Player("Oscar");
     }
